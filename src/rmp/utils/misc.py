@@ -11,7 +11,7 @@ def setup_dataroot() -> None:
     Path(os.path.join(dataroot, 'scraping')).mkdir(parents=True, exist_ok=True)
     with open(os.path.join(dataroot, 'scraping', 'scrape_input.json'), 'w') as fp:
         d = {
-            'college': '',
+            'college_sid': '',
             'names': [],
             'table_name': '',
         }
