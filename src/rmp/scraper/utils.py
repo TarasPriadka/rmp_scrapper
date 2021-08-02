@@ -144,7 +144,7 @@ def parse_reviews(response):
             review['labels'] = parse_labels(comment)
             review.update(parse_footer(comment))
             reviews.append(review)
-            
+
         except(IndexError):
             continue
     return reviews
@@ -166,7 +166,7 @@ def parse_teacher(response) -> Teacher:
         'tags': header['tags'],
         'most_helpful_line': header['most_helpful_line']
     })
-    
+
     reviews = []
 
     for c in parse_reviews(response):
@@ -185,5 +185,5 @@ def parse_teacher(response) -> Teacher:
         })
 
     teacher_info.append(reviews)
-    
+
     return Teacher.parse_tuple(teacher_info)

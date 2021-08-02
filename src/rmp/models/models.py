@@ -30,7 +30,8 @@ class Review:
 class TeacherMeta:
     """Dataclass for teacher's metadata."""
     tags: List[str]
-    most_helpful_line:dict
+    most_helpful_line: dict
+
 
 @dataclass
 class Teacher:
@@ -72,12 +73,13 @@ class Teacher:
             [review.__dict__ for review in map(to_dict, teacher_dict['reviews'])])
         teacher_tuple = tuple([teacher_dict[key] for key in teacher_dict])
         return teacher_tuple
-    
+
     @staticmethod
-    def parse_tuple(teacher_tuple:Tuple):
+    def parse_tuple(teacher_tuple: Tuple):
         """Parse teacher dict outputted by the scrapper."""
         print(teacher_tuple)
-        first, last, avggrade, college, department, total_ratings, would_take_again, difficulty  = teacher_tuple[0:8]
+        first, last, avggrade, college, department, total_ratings, would_take_again, difficulty = teacher_tuple[
+            0:8]
 
         teacher_meta: TeacherMeta = TeacherMeta(**teacher_tuple[8])
 

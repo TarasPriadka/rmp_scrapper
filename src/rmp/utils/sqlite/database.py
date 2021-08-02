@@ -10,9 +10,9 @@ logging.root.setLevel(logging.DEBUG)
 
 
 class SqlConnector:
-    '''Connector which loads local SQLite DB.'''
+    """Connector which loads local SQLite DB."""
 
-    def __init__(self, db_file: str, table_name: str=None):
+    def __init__(self, db_file: str, table_name: str = None):
         """
         Initialize connector with a local file
 
@@ -56,13 +56,13 @@ class SqlConnector:
         self.cursor.execute(sql, teacher_dict)
         self.conn.commit()
 
-    def get(self, first:str, last:str) -> Tuple:
+    def get(self, first: str, last: str) -> Tuple:
         """Search for the teacher in the table.
-        
+
         Args:
             first - first name 
             last - last name
-        
+
         Returns:
             predefined tuple containing all info about the teacher
         """
@@ -75,12 +75,12 @@ class SqlConnector:
         """
         self.cursor.execute(
             f"SELECT * FROM {self.table_name}")
-        
+
         teachers = []
         for teacher in self.cursor.fetchall():
             teacher_parsed = list(teacher[0:8]) + [json.loads(t) for t in teacher[8:]]
             teachers.append(Teacher.parse_tuple(teacher_parsed))
-            
+
         return teachers
 
     def __del__(self):
@@ -89,7 +89,7 @@ class SqlConnector:
 
 if __name__ == '__main__':
     default_teach1 = Teacher('Example', 'Teach', 2.5, 'de anza', 'cis', 10, 9, 4.0, TeacherMeta(
-    []), [Review('cis 1', 'awesome', 'good teach', ReviewMeta(3, 3, [], [], 10, 1, 'june 1'))])
+        []), [Review('cis 1', 'awesome', 'good teach', ReviewMeta(3, 3, [], [], 10, 1, 'june 1'))])
     # default_teach2 = Teacher('Example1', 'Teach2', 2.5, 'de anza', 'cis', 10, 9, 4.0, TeacherMeta(
     # []), [Review('cis 1', 'awesome', 'good teach', ReviewMeta(3, 3, [], [], 10, 1, 'june 1'))])
 

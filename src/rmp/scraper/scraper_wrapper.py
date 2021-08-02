@@ -14,6 +14,7 @@ from twisted.internet import reactor
 
 from rmp.scraper.rmp_scraper.spiders.rmp_spider import RMPSpider, write_json
 
+
 class ScraperWrapper:
     def __init__(self, app):
         self.log = app.logger
@@ -130,6 +131,7 @@ class ScraperWrapper:
         # print(result)
 
         return result
+
 
 if __name__ == "__main__":
     scraper = ScraperWrapper()

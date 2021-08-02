@@ -26,13 +26,14 @@ class RMPSpider(scrapy.Spider):
 
         self.college_sid = spider_input['college_sid']
         self.names = spider_input['names']
-        logging.info(f'Running scraping job on school SID {self.college_sid}. Got names: {self.names}')
+        logging.info(
+            f'Running scraping job on school SID {self.college_sid}. Got names: {self.names}')
 
         db_path = os.path.join(os.environ['DATAROOT'], 'db', kwargs['db_file'])
-        
+
         self.sql = SqlConnector(db_path, spider_input['table_name'])
-        logging.info(f'Initialized RMP spider with db at {db_path}, and table name {spider_input["table_name"]}')
-        
+        logging.info(
+            f'Initialized RMP spider with db at {db_path}, and table name {spider_input["table_name"]}')
 
     def start_requests(self):
         for name in self.names:
